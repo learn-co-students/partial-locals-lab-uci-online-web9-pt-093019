@@ -1,1 +1,11 @@
-<%= render partial: 'student', locals: {student: @student} %>
+<form method='GET' action='/students'>
+    <label>Student Name</label>
+    <input type='text' name='query'>
+
+    <input type='hidden' name='authenticity_token' value="<%= form_authenticity_token%>">
+    <input type='submit' value='Search'>
+</form>
+
+<% @students.each do |s| %>
+    <%= render partial: 'student', locals: {student: s} %>
+<% end %>
